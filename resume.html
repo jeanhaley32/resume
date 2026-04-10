@@ -299,6 +299,44 @@
         .skill-pills li {
             font-size: 8.5pt;
             line-height: 1.7;
+            position: relative;
+        }
+
+        .skill-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            background: var(--primary);
+            color: #E5E7EB;
+            font-size: 7.5pt;
+            font-weight: 400;
+            line-height: 1.5;
+            padding: 8px 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: opacity 0.2s, visibility 0.2s;
+            pointer-events: none;
+            z-index: 10;
+            text-align: left;
+        }
+
+        .skill-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: var(--primary);
+        }
+
+        .skill-pills li:hover .skill-tooltip {
+            visibility: visible;
+            opacity: 1;
         }
 
         .skill-pills a {
@@ -345,13 +383,17 @@
             margin-bottom: 10px;
         }
 
+        .project-card-wrap {
+            position: relative;
+            margin-bottom: 6px;
+        }
+
         .project-card {
             display: block;
             font-size: 9pt;
             font-weight: 500;
             color: var(--accent);
             padding: 6px 10px;
-            margin-bottom: 6px;
             border: 1px solid var(--divider);
             border-radius: 6px;
             background: var(--white);
@@ -363,6 +405,49 @@
             border-color: var(--accent);
             background: var(--accent-light);
             text-decoration: none;
+        }
+
+        .project-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 220px;
+            background: var(--primary);
+            color: #E5E7EB;
+            font-size: 8pt;
+            line-height: 1.5;
+            padding: 10px 12px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: opacity 0.2s, visibility 0.2s;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .project-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: var(--primary);
+        }
+
+        .project-tooltip .tooltip-lang {
+            display: inline-block;
+            font-size: 7.5pt;
+            font-weight: 600;
+            color: var(--accent-bright);
+            margin-top: 4px;
+        }
+
+        .project-card-wrap:hover .project-tooltip {
+            visibility: visible;
+            opacity: 1;
         }
 
         /* ── Print ── */
@@ -468,11 +553,19 @@
                 text-align: left;
             }
 
-            .project-card {
+            .project-card-wrap {
                 display: inline-block;
                 margin-right: 8px;
                 margin-bottom: 8px;
+            }
+
+            .project-card {
                 padding: 8px 14px;
+            }
+
+            .project-tooltip,
+            .skill-tooltip {
+                display: none;
             }
 
             .job-meta {
@@ -619,10 +712,18 @@
                 gap: 5px;
             }
 
-            .project-card {
+            .project-card-wrap {
                 display: block;
                 margin-right: 0;
+            }
+
+            .project-card {
                 text-align: center;
+            }
+
+            .project-tooltip,
+            .skill-tooltip {
+                display: none;
             }
 
             .summary {
@@ -647,15 +748,43 @@
         <div class="main">
             <div class="section-title">Professional Summary</div>
             <div class="summary-subtitle">Cloud and DevOps Specialist</div>
-            <p class="summary">Site Reliability Engineer with Google-scale training and hands-on implementation leadership. 5+ years progressing from Google's IT Resident program to SRE, now applying enterprise-level reliability practices to business-critical infrastructure. Expert in translating large-scale platform concepts (Borg, RAPID) into industry-standard implementations (Kubernetes, GitHub Actions). Proven track record of end-to-end infrastructure ownership, cloud migrations, and building resilient systems that deliver measurable business impact.</p>
+            <p class="summary">Site Reliability Engineer with Google-scale training and hands-on implementation leadership. 8 years in technical operations, progressing from Google's IT Resident program to SRE, now designing greenfield AWS infrastructure for an early-stage AI platform. Expert in translating large-scale platform concepts (Borg, RAPID) into industry-standard implementations (Kubernetes, GitHub Actions, ECS Fargate). Proven track record of end-to-end infrastructure ownership, cloud migrations, and building resilient systems that deliver measurable business impact.</p>
 
             <div class="section-title">Experience</div>
+
+            <!-- House-IQ -->
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title">Site Reliability Engineer <span class="dept">- Infrastructure</span></div>
+                    <div class="job-meta"><span class="job-company">House-IQ</span><span class="job-date">Jan 2026 - Present</span></div>
+                </div>
+                <p class="job-desc">Designing and building AWS infrastructure from the ground up for an early-stage AI-powered real estate platform</p>
+
+                <div class="sub-section">
+                    <div class="sub-section-title">Infrastructure and Platform Engineering</div>
+                    <ul>
+                        <li><strong>Designed and built multi-account AWS infrastructure</strong> from scratch using Pulumi (Python), with layered project isolation for networking, identity, operations, and service deployment.</li>
+                        <li><strong>Created a convention-driven service platform</strong> that auto-provisions IAM roles, container registries, secrets, and databases from a single service declaration, reducing per-service onboarding to minimal configuration.</li>
+                        <li><strong>Built factory-based ECS orchestration</strong> connecting compute, database, and identity layers through shared naming contracts and validated configuration with resource tier presets.</li>
+                    </ul>
+                </div>
+
+                <div class="sub-section">
+                    <div class="sub-section-title">CI/CD and Security</div>
+                    <ul>
+                        <li><strong>Migrated multiple services from Lambda to ECS Fargate</strong> using a standardized factory pattern, establishing the deployment model for staging and production environments.</li>
+                        <li><strong>Built cross-account release pipeline</strong> with OIDC federation, build-once-deploy-by-digest promotion, automated rollback, and composite GitHub Actions.</li>
+                        <li><strong>Deployed AWS WAF</strong> with managed rule groups, tuned from count to block mode after traffic analysis. Implemented per-service IAM with zero-trust deploy roles — no wildcard permissions.</li>
+                        <li><strong>Integrated Datadog observability</strong> with golden signals dashboards and auto-provisioned monitors per service.</li>
+                    </ul>
+                </div>
+            </div>
 
             <!-- Kaufman Rossin -->
             <div class="job">
                 <div class="job-header">
                     <div class="job-title">DevSecOps Lead <span class="dept">- DevTech</span></div>
-                    <div class="job-meta"><span class="job-company">Kaufman Rossin, Miami, FL</span><span class="job-date">Apr 2024 - Present</span></div>
+                    <div class="job-meta"><span class="job-company">Kaufman Rossin, Miami, FL</span><span class="job-date">Apr 2024 - Dec 2025</span></div>
                 </div>
                 <p class="job-desc">Applying SRE principles to lead a complete infrastructure transformation and modernization</p>
 
@@ -769,55 +898,79 @@
             <div class="sidebar-intro-line"></div>
 
             <div class="skill-category"><h3>Programming</h3><ul class="skill-pills">
-                <li><a href="https://go.dev/" target="_blank">Golang</a></li>
-                <li><a href="https://www.gnu.org/software/bash/" target="_blank">Bash</a></li>
-                <li><a href="https://www.python.org/" target="_blank">Python</a></li>
-                <li><a href="https://developer.hashicorp.com/terraform" target="_blank">Terraform</a></li>
+                <li><a href="https://go.dev/" target="_blank">Golang</a><span class="skill-tooltip">Systems language for networking, CLI tools, and infrastructure automation.</span></li>
+                <li><a href="https://www.gnu.org/software/bash/" target="_blank">Bash</a><span class="skill-tooltip">Shell scripting for automation, CI/CD pipelines, and operational tooling.</span></li>
+                <li><a href="https://www.python.org/" target="_blank">Python</a><span class="skill-tooltip">Infrastructure as code (Pulumi), service development, and scripting.</span></li>
+                <li><a href="https://developer.hashicorp.com/terraform" target="_blank">Terraform</a><span class="skill-tooltip">Declarative IaC for Azure infrastructure — AKS clusters, networking, monitoring.</span></li>
+                <li><a href="https://www.pulumi.com/" target="_blank">Pulumi</a><span class="skill-tooltip">Python-based IaC for AWS — ECS, IAM, VPC, and multi-account infrastructure.</span></li>
             </ul></div>
             <div class="skill-category"><h3>Databases</h3><ul class="skill-pills">
-                <li><a href="https://www.postgresql.org/" target="_blank">PostgreSQL</a></li>
-                <li><a href="https://www.mongodb.com/" target="_blank">MongoDB</a></li>
-                <li><a href="https://cloudnative-pg.io/" target="_blank">CNP</a></li>
-                <li><a href="https://azure.microsoft.com/en-us/products/storage/blobs" target="_blank">Azure Blob</a></li>
-                <li><a href="https://redis.io/" target="_blank">Redis</a></li>
+                <li><a href="https://www.postgresql.org/" target="_blank">PostgreSQL</a><span class="skill-tooltip">Primary relational database — RDS provisioning, SSM-based connection management.</span></li>
+                <li><a href="https://www.mongodb.com/" target="_blank">MongoDB</a><span class="skill-tooltip">Document store for real-time data pipelines with CDC integration.</span></li>
+                <li><a href="https://cloudnative-pg.io/" target="_blank">CNP</a><span class="skill-tooltip">Cloud Native PostgreSQL operator for Kubernetes-native database management.</span></li>
+                <li><a href="https://azure.microsoft.com/en-us/products/storage/blobs" target="_blank">Azure Blob</a><span class="skill-tooltip">Object storage for application data and backups in Azure environments.</span></li>
+                <li><a href="https://redis.io/" target="_blank">Redis</a><span class="skill-tooltip">In-memory data store for caching and session management.</span></li>
             </ul></div>
             <div class="skill-category"><h3>Version Control</h3><ul class="skill-pills">
-                <li><a href="https://git-scm.com/" target="_blank">Git</a></li>
-                <li><a href="https://en.wikipedia.org/wiki/Piper_(source_control_system)" target="_blank">G4/Piper <span class="google-note">(Google)</span></a></li>
-                <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+                <li><a href="https://git-scm.com/" target="_blank">Git</a><span class="skill-tooltip">Daily driver for all source control, branching strategies, and collaboration.</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Piper_(source_control_system)" target="_blank">G4/Piper <span class="google-note">(Google)</span></a><span class="skill-tooltip">Google's monorepo source control — used across all Google engineering.</span></li>
+                <li><a href="https://github.com/" target="_blank">GitHub</a><span class="skill-tooltip">Repository hosting, PR workflows, Actions CI/CD, and project management.</span></li>
             </ul></div>
             <div class="skill-category"><h3>Containers</h3><ul class="skill-pills">
-                <li><a href="https://research.google/pubs/large-scale-cluster-management-at-google-with-borg/" target="_blank">Borg <span class="google-note">(Google)</span></a></li>
-                <li><a href="https://kubernetes.io/" target="_blank">Kubernetes</a></li>
-                <li><a href="https://sre.google/sre-book/release-engineering/" target="_blank">MPM <span class="google-note">(Google)</span></a></li>
-                <li><a href="https://www.docker.com/" target="_blank">Docker</a></li>
-                <li><a href="https://aws.amazon.com/ecs/" target="_blank">AWS ECS</a></li>
+                <li><a href="https://research.google/pubs/large-scale-cluster-management-at-google-with-borg/" target="_blank">Borg <span class="google-note">(Google)</span></a><span class="skill-tooltip">Google's cluster manager — predecessor to Kubernetes, managing billions of containers.</span></li>
+                <li><a href="https://kubernetes.io/" target="_blank">Kubernetes</a><span class="skill-tooltip">Container orchestration for AKS — deployments, services, controllers, and operators.</span></li>
+                <li><a href="https://sre.google/sre-book/release-engineering/" target="_blank">MPM <span class="google-note">(Google)</span></a><span class="skill-tooltip">Google's internal package manager for building and distributing server binaries.</span></li>
+                <li><a href="https://www.docker.com/" target="_blank">Docker</a><span class="skill-tooltip">Container builds for ECS services — multi-stage, ARM64, optimized images.</span></li>
+                <li><a href="https://aws.amazon.com/ecs/" target="_blank">AWS ECS</a><span class="skill-tooltip">Fargate-based service orchestration with factory-driven provisioning.</span></li>
             </ul></div>
             <div class="skill-category"><h3>Monitoring</h3><ul class="skill-pills">
-                <li><a href="https://sre.google/sre-book/monitoring-distributed-systems/" target="_blank">Automon <span class="google-note">(Google)</span></a></li>
-                <li><a href="https://prometheus.io/" target="_blank">Prometheus</a></li>
-                <li><a href="https://grafana.com/" target="_blank">Grafana</a></li>
-                <li><a href="https://thanos.io/" target="_blank">Thanos</a></li>
+                <li><a href="https://sre.google/sre-book/monitoring-distributed-systems/" target="_blank">Automon <span class="google-note">(Google)</span></a><span class="skill-tooltip">Google's internal monitoring system for distributed infrastructure health.</span></li>
+                <li><a href="https://prometheus.io/" target="_blank">Prometheus</a><span class="skill-tooltip">Metrics collection and alerting for Kubernetes and containerized workloads.</span></li>
+                <li><a href="https://grafana.com/" target="_blank">Grafana</a><span class="skill-tooltip">Dashboard visualization for infrastructure and application metrics.</span></li>
+                <li><a href="https://thanos.io/" target="_blank">Thanos</a><span class="skill-tooltip">Highly available Prometheus with long-term storage and global query view.</span></li>
+                <li><a href="https://www.datadoghq.com/" target="_blank">Datadog</a><span class="skill-tooltip">Cloud monitoring — golden signals dashboards, ECS monitors, WAF tracking.</span></li>
             </ul></div>
             <div class="skill-category"><h3>CI/CD</h3><ul class="skill-pills">
-                <li><a href="https://sre.google/sre-book/release-engineering/" target="_blank">RAPID <span class="google-note">(Google)</span></a></li>
-                <li><a href="https://github.com/features/actions" target="_blank">GitHub Actions</a></li>
+                <li><a href="https://sre.google/sre-book/release-engineering/" target="_blank">RAPID <span class="google-note">(Google)</span></a><span class="skill-tooltip">Google's internal deployment system for safe, staged production rollouts.</span></li>
+                <li><a href="https://github.com/features/actions" target="_blank">GitHub Actions</a><span class="skill-tooltip">Workflow automation — composite actions, OIDC federation, release pipelines.</span></li>
             </ul></div>
             <div class="skill-category"><h3>Pub/Sub</h3><ul class="skill-pills">
-                <li><a href="https://cloud.google.com/pubsub" target="_blank">Goops <span class="google-note">(Google)</span></a></li>
-                <li><a href="https://kafka.apache.org/" target="_blank">Kafka</a></li>
+                <li><a href="https://cloud.google.com/pubsub" target="_blank">Goops <span class="google-note">(Google)</span></a><span class="skill-tooltip">Google's internal publish/subscribe system for asynchronous messaging.</span></li>
+                <li><a href="https://kafka.apache.org/" target="_blank">Kafka</a><span class="skill-tooltip">Event streaming via Redpanda — CDC pipelines with Debezium integration.</span></li>
+            </ul></div>
+            <div class="skill-category"><h3>Security</h3><ul class="skill-pills">
+                <li><a href="https://aws.amazon.com/waf/" target="_blank">AWS WAF</a><span class="skill-tooltip">Web application firewall — managed rules, traffic analysis, count-to-block tuning.</span></li>
+                <li><a href="https://docs.aws.amazon.com/IAM/" target="_blank">IAM</a><span class="skill-tooltip">Zero-trust roles — per-service policies, resource-scoped ARNs, no wildcards.</span></li>
+                <li><a href="https://openid.net/developers/how-connect-works/" target="_blank">OIDC</a><span class="skill-tooltip">Federated identity for cross-account GitHub Actions without stored credentials.</span></li>
             </ul></div>
             <div class="skill-category"><h3>Practices</h3><ul class="skill-pills">
-                <li><a href="https://en.wikipedia.org/wiki/Infrastructure_as_code" target="_blank">IaC</a></li>
-                <li><a href="https://sre.google/sre-book/effective-troubleshooting/" target="_blank">Incident Response</a></li>
-                <li><a href="https://en.wikipedia.org/wiki/Cloud_computing" target="_blank">Cloud Migration</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Infrastructure_as_code" target="_blank">IaC</a><span class="skill-tooltip">Codified infrastructure — Pulumi, Terraform, validated and tested before deploy.</span></li>
+                <li><a href="https://sre.google/sre-book/effective-troubleshooting/" target="_blank">Incident Response</a><span class="skill-tooltip">On-call rotations, mitigation strategies, blameless postmortems.</span></li>
+                <li><a href="https://en.wikipedia.org/wiki/Cloud_computing" target="_blank">Cloud Migration</a><span class="skill-tooltip">Lambda to ECS, hybrid to cloud-native, AWS and Azure migrations.</span></li>
+                <li><a href="https://docs.aws.amazon.com/whitepapers/latest/organizing-your-aws-environment/organizing-your-aws-environment.html" target="_blank">Multi-Account AWS</a><span class="skill-tooltip">Isolated environments with cross-account access via OIDC and IAM roles.</span></li>
+            </ul></div>
+            <div class="skill-category"><h3>AI Tooling</h3><ul class="skill-pills">
+                <li><a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">Claude Code</a><span class="skill-tooltip">AI-assisted development within a custom containerized environment.</span></li>
             </ul></div>
 
             <div class="personal-projects">
                 <h2>Personal Projects</h2>
-                <a href="#" class="project-card">TCP Server/Client</a>
-                <a href="#" class="project-card">Apple FindMy detector</a>
-                <a href="#" class="project-card">AZ Keyvault sync controller</a>
+                <div class="project-card-wrap">
+                    <a href="https://github.com/jeanhaley32/claude-capsule" target="_blank" class="project-card">Claude Capsule</a>
+                    <div class="project-tooltip">Containerized, security-focused development environment for Claude Code with encrypted credential storage.<span class="tooltip-lang">Python</span></div>
+                </div>
+                <div class="project-card-wrap">
+                    <a href="https://github.com/jeanhaley32/TCPServ" target="_blank" class="project-card">TCP Server/Client</a>
+                    <div class="project-tooltip">A simple TCP server that reflects all received traffic to everyone connected. Raw networking fundamentals.<span class="tooltip-lang">Go</span></div>
+                </div>
+                <div class="project-card-wrap">
+                    <a href="https://github.com/jeanhaley32/AppleFindMyDeviceDetector" target="_blank" class="project-card">Apple FindMy detector</a>
+                    <div class="project-tooltip">Detects Bluetooth-broadcasting Apple devices and identifies FindMy-enabled devices in range.<span class="tooltip-lang">Go</span></div>
+                </div>
+                <div class="project-card-wrap">
+                    <a href="https://github.com/jeanhaley32/azure-keyvault-sync-controller" target="_blank" class="project-card">AZ Keyvault sync controller</a>
+                    <div class="project-tooltip">Kubernetes controller that syncs Azure Key Vault secrets to SecretProviderClass objects automatically.<span class="tooltip-lang">Go</span></div>
+                </div>
             </div>
         </div>
     </div>
