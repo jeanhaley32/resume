@@ -731,9 +731,345 @@
                 line-height: 1.6;
             }
         }
+        /* ── ATS Toggle Button ── */
+        .ats-toggle {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 500;
+            color: var(--text-light);
+            background: var(--sidebar-bg);
+            border: 1px solid var(--divider);
+            border-radius: 6px;
+            padding: 6px 14px;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+            z-index: 100;
+        }
+
+        .ats-toggle:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* ── ATS Mode ── */
+        body.ats-mode {
+            font-family: 'Times New Roman', Georgia, serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            background: #fff;
+            color: #000;
+        }
+
+        body.ats-mode .ats-toggle {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        body.ats-mode .page {
+            display: block;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 32px 40px;
+        }
+
+        body.ats-mode .header {
+            display: block;
+            border-top: none;
+        }
+
+        body.ats-mode .header-main {
+            padding: 0 0 16px 0;
+            text-align: left;
+        }
+
+        body.ats-mode .header-main h1 {
+            font-family: 'Times New Roman', Georgia, serif;
+            font-size: 22pt;
+            font-weight: 700;
+            letter-spacing: 0;
+            color: #000;
+        }
+
+        body.ats-mode .header-main h1::after {
+            display: none;
+        }
+
+        body.ats-mode .header-tagline {
+            font-family: 'Times New Roman', Georgia, serif;
+            font-size: 12pt;
+            font-weight: 400;
+            color: #333;
+            margin-top: 2px;
+        }
+
+        body.ats-mode .header-main .contact,
+        body.ats-mode .header-main .links {
+            font-size: 10pt;
+            color: #333;
+        }
+
+        body.ats-mode .header-main .links a {
+            color: #000;
+            font-weight: 400;
+            text-decoration: underline;
+        }
+
+        body.ats-mode .sep {
+            color: #666;
+        }
+
+        body.ats-mode .header-side {
+            display: none;
+        }
+
+        body.ats-mode .main {
+            padding: 0;
+        }
+
+        body.ats-mode .section-title {
+            font-family: 'Times New Roman', Georgia, serif;
+            font-size: 13pt;
+            font-weight: 700;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1.5px solid #000;
+            margin-top: 18px;
+            margin-bottom: 10px;
+            padding-bottom: 3px;
+        }
+
+        body.ats-mode .summary-subtitle {
+            font-family: 'Times New Roman', Georgia, serif;
+            font-size: 10pt;
+            font-weight: 700;
+            color: #333;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        body.ats-mode .summary {
+            font-size: 10.5pt;
+            line-height: 1.45;
+            color: #000;
+        }
+
+        body.ats-mode .callouts {
+            display: none;
+        }
+
+        body.ats-mode .job {
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        body.ats-mode .job:last-child {
+            border-bottom: none;
+        }
+
+        body.ats-mode .job-title {
+            font-family: 'Times New Roman', Georgia, serif;
+            font-size: 11.5pt;
+            font-weight: 700;
+            color: #000;
+        }
+
+        body.ats-mode .job-title .dept {
+            color: #333;
+            font-weight: 400;
+        }
+
+        body.ats-mode .job-company {
+            font-family: 'Times New Roman', Georgia, serif;
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: #000;
+        }
+
+        body.ats-mode .job-date {
+            font-size: 10pt;
+            color: #333;
+        }
+
+        body.ats-mode .job-desc {
+            font-size: 10.5pt;
+            color: #333;
+        }
+
+        body.ats-mode .sub-section {
+            border-left: none;
+            padding-left: 0;
+            margin-bottom: 10px;
+        }
+
+        body.ats-mode .sub-section-title {
+            font-family: 'Times New Roman', Georgia, serif;
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: #000;
+        }
+
+        body.ats-mode .sub-section ul {
+            padding-left: 20px;
+            list-style: disc;
+        }
+
+        body.ats-mode .sub-section li {
+            font-size: 10.5pt;
+            color: #000;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        body.ats-mode .sub-section li::before {
+            display: none;
+        }
+
+        body.ats-mode .sub-section li strong {
+            color: #000;
+        }
+
+        /* ── ATS Mode: Sidebar becomes inline skills section ── */
+        body.ats-mode .sidebar {
+            background: none;
+            padding: 0;
+            margin-top: 18px;
+        }
+
+        body.ats-mode .sidebar .section-title {
+            text-align: left;
+        }
+
+        body.ats-mode .sidebar-intro-line {
+            display: none;
+        }
+
+        body.ats-mode .skill-category {
+            text-align: left;
+            margin-bottom: 6px;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        body.ats-mode .skill-category h3 {
+            font-family: 'Times New Roman', Georgia, serif;
+            font-size: 10pt;
+            font-weight: 700;
+            color: #000;
+            text-transform: none;
+            letter-spacing: 0;
+            display: inline;
+        }
+
+        body.ats-mode .skill-category h3::after {
+            content: ': ';
+        }
+
+        body.ats-mode .skill-pills {
+            display: inline;
+            gap: 0;
+        }
+
+        body.ats-mode .skill-pills li {
+            display: inline;
+            font-size: 10pt;
+            line-height: 1.4;
+        }
+
+        body.ats-mode .skill-pills li::after {
+            content: ', ';
+        }
+
+        body.ats-mode .skill-pills li:last-child::after {
+            content: '';
+        }
+
+        body.ats-mode .skill-pills a {
+            display: inline;
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            color: #000;
+            font-weight: 400;
+            font-size: 10pt;
+        }
+
+        body.ats-mode .skill-pills a:hover {
+            background: none;
+        }
+
+        body.ats-mode .skill-pills .google-note {
+            font-size: 9pt;
+            color: #555;
+        }
+
+        body.ats-mode .skill-tooltip,
+        body.ats-mode .project-tooltip {
+            display: none !important;
+        }
+
+        body.ats-mode .personal-projects {
+            text-align: left;
+            border-top: none;
+            margin-top: 10px;
+            padding-top: 0;
+        }
+
+        body.ats-mode .personal-projects h2 {
+            font-family: 'Times New Roman', Georgia, serif;
+            font-size: 10pt;
+            font-weight: 700;
+            color: #000;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        body.ats-mode .project-card-wrap {
+            margin-bottom: 2px;
+        }
+
+        body.ats-mode .project-card {
+            display: inline;
+            font-family: 'Times New Roman', Georgia, serif;
+            font-size: 10pt;
+            color: #000;
+            background: none;
+            border: none;
+            padding: 0;
+            border-radius: 0;
+            text-decoration: underline;
+        }
+
+        body.ats-mode .project-card:hover {
+            background: none;
+            border-color: transparent;
+        }
+
+        body.ats-mode .project-card-wrap::after {
+            content: ' | ';
+            color: #666;
+            font-size: 10pt;
+        }
+
+        body.ats-mode .project-card-wrap:last-child::after {
+            content: '';
+        }
+
+        @media print {
+            .ats-toggle {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
+    <button class="ats-toggle" onclick="document.body.classList.toggle('ats-mode'); this.textContent = document.body.classList.contains('ats-mode') ? 'Designed View' : 'ATS-Friendly';">ATS-Friendly</button>
     <div class="page">
         <div class="header">
             <div class="header-main">
