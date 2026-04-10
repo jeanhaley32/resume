@@ -298,17 +298,23 @@
 
         .skill-pills li {
             font-size: 8.5pt;
+            line-height: 1.7;
+        }
+
+        .skill-pills a {
+            display: inline-block;
             padding: 2px 8px;
             background: var(--accent-pill);
             color: var(--primary);
             border-radius: 10px;
             font-weight: 500;
-            line-height: 1.7;
+            text-decoration: none;
             transition: background 0.15s;
         }
 
-        .skill-pills li:hover {
+        .skill-pills a:hover {
             background: var(--accent-pill-hover);
+            text-decoration: none;
         }
 
         .skill-pills .google-note {
@@ -371,8 +377,10 @@
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
-            .skill-pills li {
+            .skill-pills a {
                 background: var(--accent-pill) !important;
+                color: var(--primary) !important;
+                text-decoration: none !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
@@ -620,14 +628,50 @@
             <div class="section-title">Skills</div>
             <div class="sidebar-intro-line"></div>
 
-            <div class="skill-category"><h3>Programming</h3><ul class="skill-pills"><li>Golang</li><li>Bash</li><li>Python</li><li>Terraform</li></ul></div>
-            <div class="skill-category"><h3>Databases</h3><ul class="skill-pills"><li>PostgreSQL</li><li>MongoDB</li><li>CNP</li><li>Azure Blob</li><li>Redis</li></ul></div>
-            <div class="skill-category"><h3>Version Control</h3><ul class="skill-pills"><li>Git</li><li>G4/Piper <span class="google-note">(Google)</span></li><li>GitHub</li></ul></div>
-            <div class="skill-category"><h3>Containers</h3><ul class="skill-pills"><li>Borg <span class="google-note">(Google)</span></li><li>Kubernetes</li><li>MPM <span class="google-note">(Google)</span></li><li>Docker</li><li>AWS ECS</li></ul></div>
-            <div class="skill-category"><h3>Monitoring</h3><ul class="skill-pills"><li>Automon <span class="google-note">(Google)</span></li><li>Prometheus</li><li>Grafana</li><li>Thanos</li></ul></div>
-            <div class="skill-category"><h3>CI/CD</h3><ul class="skill-pills"><li>RAPID <span class="google-note">(Google)</span></li><li>GitHub Actions</li></ul></div>
-            <div class="skill-category"><h3>Pub/Sub</h3><ul class="skill-pills"><li>Goops <span class="google-note">(Google)</span></li><li>Kafka</li></ul></div>
-            <div class="skill-category"><h3>Practices</h3><ul class="skill-pills"><li>IaC</li><li>Incident Response</li><li>Cloud Migration</li></ul></div>
+            <div class="skill-category"><h3>Programming</h3><ul class="skill-pills">
+                <li><a href="https://go.dev/" target="_blank">Golang</a></li>
+                <li><a href="https://www.gnu.org/software/bash/" target="_blank">Bash</a></li>
+                <li><a href="https://www.python.org/" target="_blank">Python</a></li>
+                <li><a href="https://developer.hashicorp.com/terraform" target="_blank">Terraform</a></li>
+            </ul></div>
+            <div class="skill-category"><h3>Databases</h3><ul class="skill-pills">
+                <li><a href="https://www.postgresql.org/" target="_blank">PostgreSQL</a></li>
+                <li><a href="https://www.mongodb.com/" target="_blank">MongoDB</a></li>
+                <li><a href="https://cloudnative-pg.io/" target="_blank">CNP</a></li>
+                <li><a href="https://azure.microsoft.com/en-us/products/storage/blobs" target="_blank">Azure Blob</a></li>
+                <li><a href="https://redis.io/" target="_blank">Redis</a></li>
+            </ul></div>
+            <div class="skill-category"><h3>Version Control</h3><ul class="skill-pills">
+                <li><a href="https://git-scm.com/" target="_blank">Git</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Piper_(source_control_system)" target="_blank">G4/Piper <span class="google-note">(Google)</span></a></li>
+                <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+            </ul></div>
+            <div class="skill-category"><h3>Containers</h3><ul class="skill-pills">
+                <li><a href="https://research.google/pubs/large-scale-cluster-management-at-google-with-borg/" target="_blank">Borg <span class="google-note">(Google)</span></a></li>
+                <li><a href="https://kubernetes.io/" target="_blank">Kubernetes</a></li>
+                <li><a href="https://sre.google/sre-book/release-engineering/" target="_blank">MPM <span class="google-note">(Google)</span></a></li>
+                <li><a href="https://www.docker.com/" target="_blank">Docker</a></li>
+                <li><a href="https://aws.amazon.com/ecs/" target="_blank">AWS ECS</a></li>
+            </ul></div>
+            <div class="skill-category"><h3>Monitoring</h3><ul class="skill-pills">
+                <li><a href="https://sre.google/sre-book/monitoring-distributed-systems/" target="_blank">Automon <span class="google-note">(Google)</span></a></li>
+                <li><a href="https://prometheus.io/" target="_blank">Prometheus</a></li>
+                <li><a href="https://grafana.com/" target="_blank">Grafana</a></li>
+                <li><a href="https://thanos.io/" target="_blank">Thanos</a></li>
+            </ul></div>
+            <div class="skill-category"><h3>CI/CD</h3><ul class="skill-pills">
+                <li><a href="https://sre.google/sre-book/release-engineering/" target="_blank">RAPID <span class="google-note">(Google)</span></a></li>
+                <li><a href="https://github.com/features/actions" target="_blank">GitHub Actions</a></li>
+            </ul></div>
+            <div class="skill-category"><h3>Pub/Sub</h3><ul class="skill-pills">
+                <li><a href="https://cloud.google.com/pubsub" target="_blank">Goops <span class="google-note">(Google)</span></a></li>
+                <li><a href="https://kafka.apache.org/" target="_blank">Kafka</a></li>
+            </ul></div>
+            <div class="skill-category"><h3>Practices</h3><ul class="skill-pills">
+                <li><a href="https://en.wikipedia.org/wiki/Infrastructure_as_code" target="_blank">IaC</a></li>
+                <li><a href="https://sre.google/sre-book/effective-troubleshooting/" target="_blank">Incident Response</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Cloud_computing" target="_blank">Cloud Migration</a></li>
+            </ul></div>
 
             <div class="personal-projects">
                 <h2>Personal Projects</h2>
