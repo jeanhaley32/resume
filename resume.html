@@ -401,14 +401,29 @@
         @media (max-width: 768px) {
             .page {
                 grid-template-columns: 1fr;
+                min-height: auto;
             }
 
             .header {
                 grid-template-columns: 1fr;
+                border-top-width: 5px;
             }
 
             .header-main {
-                padding: 28px 24px 20px 24px;
+                padding: 28px 24px 22px 24px;
+                text-align: center;
+            }
+
+            .header-main h1 {
+                font-size: 32pt;
+            }
+
+            .header-main h1::after {
+                margin: 10px auto 0 auto;
+            }
+
+            .header-tagline {
+                font-size: 10.5pt;
             }
 
             .header-side { display: none; }
@@ -418,19 +433,35 @@
             }
 
             .sidebar {
-                padding: 24px 24px 32px 24px;
+                padding: 28px 24px 36px 24px;
             }
 
-            .skill-pills {
-                justify-content: flex-start;
+            .sidebar .section-title {
+                text-align: left;
+            }
+
+            .sidebar-intro-line {
+                margin: 0 0 16px 0;
             }
 
             .skill-category {
                 text-align: left;
+                margin-bottom: 16px;
             }
 
             .skill-category h3 {
                 text-align: left;
+                font-size: 9pt;
+            }
+
+            .skill-pills {
+                justify-content: flex-start;
+                gap: 6px;
+            }
+
+            .skill-pills a {
+                padding: 4px 12px;
+                font-size: 9pt;
             }
 
             .personal-projects {
@@ -440,11 +471,34 @@
             .project-card {
                 display: inline-block;
                 margin-right: 8px;
+                margin-bottom: 8px;
+                padding: 8px 14px;
             }
 
             .job-meta {
                 flex-direction: column;
                 gap: 2px;
+            }
+
+            .callouts {
+                gap: 8px;
+            }
+
+            .callout {
+                font-size: 9pt;
+                padding: 4px 12px;
+            }
+
+            .callout .callout-label {
+                font-size: 8.5pt;
+            }
+
+            .sub-section {
+                margin-bottom: 16px;
+            }
+
+            .sub-section li {
+                margin-bottom: 10px;
             }
         }
 
@@ -452,17 +506,35 @@
         @media (max-width: 480px) {
             body { font-size: 10pt; }
 
-            .header-main h1 {
-                font-size: 28pt;
-                letter-spacing: -1px;
-            }
-
-            .header-tagline {
-                font-size: 10pt;
+            .header {
+                border-top-width: 4px;
             }
 
             .header-main {
                 padding: 24px 18px 18px 18px;
+            }
+
+            .header-main h1 {
+                font-size: 26pt;
+                letter-spacing: -0.5px;
+            }
+
+            .header-tagline {
+                font-size: 9.5pt;
+                margin-top: 4px;
+            }
+
+            .header-main .contact {
+                font-size: 8.5pt;
+                margin-top: 8px;
+            }
+
+            .header-main .contact .sep {
+                margin: 0 4px;
+            }
+
+            .header-main .links {
+                font-size: 8.5pt;
             }
 
             .main {
@@ -470,24 +542,92 @@
             }
 
             .sidebar {
-                padding: 20px 18px 28px 18px;
+                padding: 22px 18px 28px 18px;
             }
 
             .section-title {
                 font-size: 10pt;
+                letter-spacing: 1px;
+                margin-top: 22px;
+                margin-bottom: 12px;
+            }
+
+            .job {
+                margin-bottom: 20px;
+                padding-bottom: 18px;
+            }
+
+            .job-title {
+                font-size: 10.5pt;
+            }
+
+            .job-company {
+                font-size: 9pt;
+            }
+
+            .job-date {
+                font-size: 8pt;
+            }
+
+            .job-desc {
+                font-size: 9pt;
             }
 
             .callouts {
                 gap: 6px;
+                margin: 10px 0 12px 0;
             }
 
             .callout {
                 font-size: 8pt;
-                padding: 2px 8px;
+                padding: 3px 9px;
             }
 
             .callout .callout-label {
                 font-size: 7.5pt;
+                margin-left: 4px;
+            }
+
+            .sub-section {
+                padding-left: 10px;
+            }
+
+            .sub-section-title {
+                font-size: 9pt;
+            }
+
+            .sub-section ul {
+                padding-left: 12px;
+            }
+
+            .sub-section li {
+                font-size: 9.5pt;
+                line-height: 1.6;
+            }
+
+            .sub-section li::before {
+                left: -12px;
+                font-size: 8pt;
+            }
+
+            .skill-pills a {
+                padding: 3px 10px;
+                font-size: 8.5pt;
+            }
+
+            .skill-pills {
+                gap: 5px;
+            }
+
+            .project-card {
+                display: block;
+                margin-right: 0;
+                text-align: center;
+            }
+
+            .summary {
+                font-size: 9.5pt;
+                line-height: 1.6;
             }
         }
     </style>
