@@ -743,10 +743,10 @@
             right: 16px;
             font-family: 'Inter', sans-serif;
             font-size: 8.5pt;
-            font-weight: 500;
-            color: var(--text-light);
+            font-weight: 600;
+            color: var(--accent);
             background: var(--sidebar-bg);
-            border: 1px solid var(--divider);
+            border: 1px solid var(--accent);
             border-radius: 6px;
             padding: 6px 14px;
             cursor: pointer;
@@ -755,6 +755,30 @@
         }
 
         .ats-toggle:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        /* ── Download PDF Button (sits just left of the ATS toggle) ── */
+        .pdf-download {
+            position: fixed;
+            top: 16px;
+            right: 132px;
+            font-family: 'Inter', sans-serif;
+            font-size: 8.5pt;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--sidebar-bg);
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            padding: 6px 14px;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+            z-index: 100;
+        }
+
+        .pdf-download:hover {
             background: var(--accent);
             color: #fff;
             border-color: var(--accent);
@@ -1067,7 +1091,8 @@
         }
 
         @media print {
-            .ats-toggle {
+            .ats-toggle,
+            .pdf-download {
                 display: none;
             }
         }
@@ -1097,6 +1122,7 @@
 </head>
 <body>
     <a href="https://www.youtube.com/watch?v=hoWEYBSlctc" target="_blank" class="easter-egg" onclick="if(event.ctrlKey&&event.shiftKey||event.metaKey&&event.shiftKey){event.preventDefault();window.open('https://www.houstonwaterbills.houstontx.gov/ProdDP/Default/Default','_blank');}">&pi;</a>
+    <button class="pdf-download" onclick="window.print();">Download PDF</button>
     <button class="ats-toggle" onclick="document.body.classList.toggle('ats-mode'); this.textContent = document.body.classList.contains('ats-mode') ? 'Designed View' : 'ATS-Friendly';">ATS-Friendly</button>
     <div class="page">
         <div class="header">
